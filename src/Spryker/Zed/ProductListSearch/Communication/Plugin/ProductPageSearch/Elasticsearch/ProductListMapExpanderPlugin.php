@@ -5,23 +5,21 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch;
+namespace Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\Elasticsearch;
 
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\PageMapTransfer;
 use Generated\Shared\Transfer\ProductListMapTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageMapExpanderInterface;
-use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface;
+use Spryker\Zed\ProductPageSearchExtension\Dependency\PageMapBuilderInterface;
+use Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractPageMapExpanderPluginInterface;
 
 /**
- * @deprecated Use `\Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductListMapExpanderPlugin` instead.
- *
  * @method \Spryker\Zed\ProductListSearch\Business\ProductListSearchFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductListSearch\Communication\ProductListSearchCommunicationFactory getFactory()
  * @method \Spryker\Zed\ProductListSearch\ProductListSearchConfig getConfig()
  */
-class ProductListMapExpanderPlugin extends AbstractPlugin implements ProductPageMapExpanderInterface
+class ProductListMapExpanderPlugin extends AbstractPlugin implements ProductAbstractPageMapExpanderPluginInterface
 {
     protected const KEY_PRODUCT_LIST_MAP = 'product_list_map';
 
@@ -31,7 +29,7 @@ class ProductListMapExpanderPlugin extends AbstractPlugin implements ProductPage
      * @api
      *
      * @param \Generated\Shared\Transfer\PageMapTransfer $pageMapTransfer
-     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface $pageMapBuilder
+     * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\PageMapBuilderInterface $pageMapBuilder
      * @param array $productData
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
