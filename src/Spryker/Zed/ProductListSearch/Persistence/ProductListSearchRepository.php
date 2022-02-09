@@ -60,7 +60,6 @@ class ProductListSearchRepository extends AbstractRepository implements ProductL
      */
     protected function getEnumValueForListType(string $listType): int
     {
-        /** @phpstan-var int */
         return array_search(
             $listType,
             SpyProductListTableMap::getValueSet(SpyProductListTableMap::COL_TYPE),
