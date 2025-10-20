@@ -4,4 +4,4 @@ parameters:
             identifier: missingType.iterableValue
     level: 7
     excludePaths:
-        - '%rootDir%/../../../vendor/spryker/spryker/Bundles/ProductListSearch/src/Spryker/Client/ProductListSearch/Plugin/Search/ProductListQueryExpanderPlugin.php'
+        - '%rootDir%/../../../src/Spryker/ProductListSearch/src/Spryker/Client/ProductListSearch/Plugin/Search/ProductListQueryExpanderPlugin.php'
