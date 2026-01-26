@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\ProductListSearch\Communication;
 
+use Spryker\Zed\CategoryPageSearch\Business\CategoryPageSearchFacadeInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToEventBehaviorFacadeInterface;
 use Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToProductListFacadeInterface;
@@ -50,5 +51,13 @@ class ProductListSearchCommunicationFactory extends AbstractCommunicationFactory
     public function getProductCategoryFacade()
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_PRODUCT_CATEGORY);
+    }
+
+    /**
+     * @return \Spryker\Zed\CategoryPageSearch\Business\CategoryPageSearchFacadeInterface
+     */
+    public function getCategoryPageSearchFacade(): CategoryPageSearchFacadeInterface
+    {
+        return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_CATEGORY_PAGE_SEARCH);
     }
 }

@@ -7,9 +7,15 @@
 
 namespace Spryker\Zed\ProductListSearch\Persistence;
 
+use Orm\Zed\Category\Persistence\Map\SpyCategoryNodeTableMap;
+use Orm\Zed\Category\Persistence\SpyCategoryNodeQuery;
 use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\ProductCategory\Persistence\Map\SpyProductCategoryTableMap;
+use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
+use Orm\Zed\ProductList\Persistence\Map\SpyProductListCategoryTableMap;
+use Orm\Zed\ProductList\Persistence\Map\SpyProductListProductConcreteTableMap;
 use Orm\Zed\ProductList\Persistence\Map\SpyProductListTableMap;
+use Orm\Zed\ProductList\Persistence\SpyProductListCategoryQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 
 /**
@@ -136,8 +142,8 @@ class ProductListSearchRepository extends AbstractRepository implements ProductL
             ->getData();
 
         foreach ($productAbstractData as $productAbstract) {
-            $productAbstractIdTimestampMap[(int)$productAbstractData[SpyProductCategoryTableMap::COL_FK_PRODUCT_ABSTRACT]] =
-                $categoryIdsTimestampMap[$productAbstractData[SpyProductCategoryTableMap::COL_FK_CATEGORY]];
+            $productAbstractIdTimestampMap[(int)$productAbstract[SpyProductCategoryTableMap::COL_FK_PRODUCT_ABSTRACT]] =
+                $categoryIdsTimestampMap[$productAbstract[SpyProductCategoryTableMap::COL_FK_CATEGORY]];
         }
 
         return $productAbstractIdTimestampMap;
@@ -171,5 +177,83 @@ class ProductListSearchRepository extends AbstractRepository implements ProductL
         }
 
         return $productAbstractIdTimestampMap;
+    }
+
+    /**
+     * @param int $idCategory
+     *
+     * @return array<int>
+     */
+    public function getProductListWhitelistIdsByIdCategory(int $idCategory): array
+    {
+        $productListIdsFromProducts = SpyProductCategoryQuery::create()
+            ->filterByFkCategory($idCategory)
+            ->useSpyProductAbstractQuery()
+                ->useSpyProductQuery()
+                    ->joinSpyProductListProductConcrete()
+                ->endUse()
+            ->endUse()
+            ->select(SpyProductListProductConcreteTableMap::COL_FK_PRODUCT_LIST)
+            ->distinct()
+            ->find()
+            ->getData();
+
+        $productListIdsFromCategory = SpyProductListCategoryQuery::create()
+            ->filterByFkCategory($idCategory)
+            ->select(SpyProductListCategoryTableMap::COL_FK_PRODUCT_LIST)
+            ->distinct()
+            ->find()
+            ->getData();
+
+        $mergedProductListIds = array_unique(array_merge($productListIdsFromProducts, $productListIdsFromCategory));
+
+        return array_map('intval', $mergedProductListIds);
+    }
+
+    /**
+     * @param array<int> $productConcreteIds
+     *
+     * @return array<int>
+     */
+    public function getCategoryNodeIdsByProductConcreteIds(array $productConcreteIds): array
+    {
+        $categoryIds = SpyProductCategoryQuery::create()
+            ->useSpyProductAbstractQuery()
+                ->useSpyProductQuery()
+                    ->filterByIdProduct_In($productConcreteIds)
+                ->endUse()
+            ->endUse()
+            ->select(SpyProductCategoryTableMap::COL_FK_CATEGORY)
+            ->distinct()
+            ->find()
+            ->getData();
+
+        if (!$categoryIds) {
+            return [];
+        }
+
+        $categoryNodeIds = SpyCategoryNodeQuery::create()
+            ->filterByFkCategory_In($categoryIds)
+            ->select(SpyCategoryNodeTableMap::COL_ID_CATEGORY_NODE)
+            ->find()
+            ->getData();
+
+        return array_map('intval', $categoryNodeIds);
+    }
+
+    /**
+     * @param array<int> $categoryIds
+     *
+     * @return array<int>
+     */
+    public function getCategoryNodeIdsByCategoryIds(array $categoryIds): array
+    {
+        $categoryNodeIds = SpyCategoryNodeQuery::create()
+            ->filterByFkCategory_In($categoryIds)
+            ->select(SpyCategoryNodeTableMap::COL_ID_CATEGORY_NODE)
+            ->find()
+            ->getData();
+
+        return array_map('intval', $categoryNodeIds);
     }
 }

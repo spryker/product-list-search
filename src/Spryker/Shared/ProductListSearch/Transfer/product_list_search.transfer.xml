@@ -66,4 +66,7 @@
     <transfer name="EventEntity">
     </transfer>
 
+    <transfer name="Node">
+    </transfer>
+
 </transfers>

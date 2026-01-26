@@ -1,5 +1,8 @@
 {
     "include": {
         "spryker/transfer": "Provides transfer objects definition with strict types and `::get*OrFail()` functionality."
+    },
+    "exclude": {
+        "spryker/category": "spryker/product-category already provides this dependency."
     }
 }

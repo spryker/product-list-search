@@ -50,4 +50,25 @@ interface ProductListSearchRepositoryInterface
      * @return array<int, int>
      */
     public function getProductAbstractIdsTimestampMapByConcreteIds(array $concreteIdsTimestampMap = []): array;
+
+    /**
+     * @param int $idCategory
+     *
+     * @return array<int>
+     */
+    public function getProductListWhitelistIdsByIdCategory(int $idCategory): array;
+
+    /**
+     * @param array<int> $productConcreteIds
+     *
+     * @return array<int>
+     */
+    public function getCategoryNodeIdsByProductConcreteIds(array $productConcreteIds): array;
+
+    /**
+     * @param array<int> $categoryIds
+     *
+     * @return array<int>
+     */
+    public function getCategoryNodeIdsByCategoryIds(array $categoryIds): array;
 }

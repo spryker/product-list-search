@@ -8,6 +8,8 @@
 namespace Spryker\Zed\ProductListSearch\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\ProductListSearch\Business\Expander\CategoryNodePageSearchExpander;
+use Spryker\Zed\ProductListSearch\Business\Expander\CategoryNodePageSearchExpanderInterface;
 use Spryker\Zed\ProductListSearch\Business\Expander\ProductConcretePageSearchExpander;
 use Spryker\Zed\ProductListSearch\Business\Expander\ProductConcretePageSearchExpanderInterface;
 use Spryker\Zed\ProductListSearch\Business\ProductAbstract\ProductAbstractReader;
@@ -67,5 +69,13 @@ class ProductListSearchBusinessFactory extends AbstractBusinessFactory
         return new ProductPageDataExpander(
             $this->getProductListFacade(),
         );
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductListSearch\Business\Expander\CategoryNodePageSearchExpanderInterface
+     */
+    public function createCategoryNodePageSearchExpander(): CategoryNodePageSearchExpanderInterface
+    {
+        return new CategoryNodePageSearchExpander($this->getRepository());
     }
 }

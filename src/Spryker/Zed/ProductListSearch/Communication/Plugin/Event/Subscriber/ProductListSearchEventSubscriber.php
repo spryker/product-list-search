@@ -14,10 +14,12 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
 use Spryker\Zed\ProductList\Dependency\ProductListEvents;
+use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListCategoryNodePageSearchPublishListener;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListCategoryProductConcretePageSearchPublishListener;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListCategorySearchListener;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListProductCategoryPublishSearchListener;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListProductCategorySearchListener;
+use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListProductConcreteCategoryPageSearchPublishListener;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListProductConcretePageSearchPublishListener;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListProductConcreteProductConcretePageSearchPublishListener;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Listener\ProductListProductConcretePublishSearchListener;
@@ -70,6 +72,14 @@ class ProductListSearchEventSubscriber extends AbstractPlugin implements EventSu
         $this->addProductListProductConcreteCreateProductConcretePageSearchPublishListener($eventCollection);
         $this->addProductListProductConcreteUpdateProductConcretePageSearchPublishListener($eventCollection);
         $this->addProductListProductConcreteDeleteProductConcretePageSearchPublishListener($eventCollection);
+
+        $this->addProductListProductConcreteCreateCategoryPageSearchPublishListener($eventCollection);
+        $this->addProductListProductConcreteUpdateCategoryPageSearchPublishListener($eventCollection);
+        $this->addProductListProductConcreteDeleteCategoryPageSearchPublishListener($eventCollection);
+
+        $this->addProductListCategoryCreateCategoryNodePageSearchPublishListener($eventCollection);
+        $this->addProductListCategoryUpdateCategoryNodePageSearchPublishListener($eventCollection);
+        $this->addProductListCategoryDeleteCategoryNodePageSearchPublishListener($eventCollection);
 
         return $eventCollection;
     }
@@ -293,5 +303,35 @@ class ProductListSearchEventSubscriber extends AbstractPlugin implements EventSu
     protected function addProductListCategoryDeleteProductConcretePageSearchPublishListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection->addListenerQueued(ProductListEvents::ENTITY_SPY_PRODUCT_LIST_CATEGORY_DELETE, new ProductListCategoryProductConcretePageSearchPublishListener(), 0, null, $this->getConfig()->getEventQueueName());
+    }
+
+    protected function addProductListProductConcreteCreateCategoryPageSearchPublishListener(EventCollectionInterface $eventCollection): void
+    {
+        $eventCollection->addListenerQueued(ProductListEvents::ENTITY_SPY_PRODUCT_LIST_PRODUCT_CONCRETE_CREATE, new ProductListProductConcreteCategoryPageSearchPublishListener(), 0, null, $this->getConfig()->getEventQueueName());
+    }
+
+    protected function addProductListProductConcreteUpdateCategoryPageSearchPublishListener(EventCollectionInterface $eventCollection): void
+    {
+        $eventCollection->addListenerQueued(ProductListEvents::ENTITY_SPY_PRODUCT_LIST_PRODUCT_CONCRETE_UPDATE, new ProductListProductConcreteCategoryPageSearchPublishListener(), 0, null, $this->getConfig()->getEventQueueName());
+    }
+
+    protected function addProductListProductConcreteDeleteCategoryPageSearchPublishListener(EventCollectionInterface $eventCollection): void
+    {
+        $eventCollection->addListenerQueued(ProductListEvents::ENTITY_SPY_PRODUCT_LIST_PRODUCT_CONCRETE_DELETE, new ProductListProductConcreteCategoryPageSearchPublishListener(), 0, null, $this->getConfig()->getEventQueueName());
+    }
+
+    protected function addProductListCategoryCreateCategoryNodePageSearchPublishListener(EventCollectionInterface $eventCollection): void
+    {
+        $eventCollection->addListenerQueued(ProductListEvents::ENTITY_SPY_PRODUCT_LIST_CATEGORY_CREATE, new ProductListCategoryNodePageSearchPublishListener(), 0, null, $this->getConfig()->getEventQueueName());
+    }
+
+    protected function addProductListCategoryUpdateCategoryNodePageSearchPublishListener(EventCollectionInterface $eventCollection): void
+    {
+        $eventCollection->addListenerQueued(ProductListEvents::ENTITY_SPY_PRODUCT_LIST_CATEGORY_UPDATE, new ProductListCategoryNodePageSearchPublishListener(), 0, null, $this->getConfig()->getEventQueueName());
+    }
+
+    protected function addProductListCategoryDeleteCategoryNodePageSearchPublishListener(EventCollectionInterface $eventCollection): void
+    {
+        $eventCollection->addListenerQueued(ProductListEvents::ENTITY_SPY_PRODUCT_LIST_CATEGORY_DELETE, new ProductListCategoryNodePageSearchPublishListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 }

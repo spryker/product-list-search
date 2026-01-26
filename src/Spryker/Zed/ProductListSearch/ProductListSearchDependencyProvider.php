@@ -64,6 +64,11 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
     public const FACADE_PRODUCT_CATEGORY = 'FACADE_PRODUCT_CATEGORY';
 
     /**
+     * @var string
+     */
+    public const FACADE_CATEGORY_PAGE_SEARCH = 'FACADE_CATEGORY_PAGE_SEARCH';
+
+    /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
@@ -88,6 +93,7 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         $container = $this->addProductPageSearchFacade($container);
         $container = $this->addProductListFacade($container);
         $container = $this->addProductCategoryFacade($container);
+        $container = $this->addCategoryPageSearchFacade($container);
 
         return $container;
     }
@@ -216,6 +222,20 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         $container->set(static::PROPEL_PRODUCT_LIST_PRODUCT_CONCRETE_QUERY, $container->factory(function () {
             return SpyProductListProductConcreteQuery::create();
         }));
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addCategoryPageSearchFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_CATEGORY_PAGE_SEARCH, function (Container $container) {
+            return $container->getLocator()->categoryPageSearch()->facade();
+        });
 
         return $container;
     }
