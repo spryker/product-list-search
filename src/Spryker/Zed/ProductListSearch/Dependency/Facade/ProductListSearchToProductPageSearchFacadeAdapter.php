@@ -33,17 +33,13 @@ class ProductListSearchToProductPageSearchFacadeAdapter implements ProductListSe
     }
 
     /**
-     * @param array<int, int> $productAbstractIdTimestampMap
+     * @param array<int> $productConcreteIds
      *
      * @return void
      */
-    public function publishProductConcretes(array $productAbstractIdTimestampMap): void
+    public function publishProductConcretes(array $productConcreteIds): void
     {
-        if (!method_exists($this->productPageSearchFacade, 'publishWithTimestamp') === false) {
-            $this->productPageSearchFacade->refresh(array_keys($productAbstractIdTimestampMap));
-        }
-
-        $this->productPageSearchFacade->publishProductConcretes($productAbstractIdTimestampMap);
+        $this->productPageSearchFacade->publishProductConcretes($productConcreteIds);
     }
 
     /**
