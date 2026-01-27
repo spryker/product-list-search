@@ -17,11 +17,11 @@ interface ProductListSearchToProductPageSearchFacadeInterface
     public function publish(array $productAbstractIds): void;
 
     /**
-     * @param array<int, int> $productAbstractIdTimestampMap
+     * @param array<int> $productConcreteIds
      *
      * @return void
      */
-    public function publishProductConcretes(array $productAbstractIdTimestampMap): void;
+    public function publishProductConcretes(array $productConcreteIds): void;
 
     /**
      * @param array<int, int> $productAbstractIdTimestampMap
