@@ -39,6 +39,7 @@ class ProductListSearchToProductPageSearchFacadeAdapter implements ProductListSe
      */
     public function publishProductConcretes(array $productAbstractIdTimestampMap): void
     {
+        // @phpstan-ignore function.alreadyNarrowedType (BC check for older ProductPageSearch module versions)
         if (!method_exists($this->productPageSearchFacade, 'publishWithTimestamp') === false) {
             $this->productPageSearchFacade->refresh(array_keys($productAbstractIdTimestampMap));
         }
