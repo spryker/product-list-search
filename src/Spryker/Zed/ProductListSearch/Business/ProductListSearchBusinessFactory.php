@@ -27,9 +27,6 @@ use Spryker\Zed\ProductListSearch\ProductListSearchDependencyProvider;
  */
 class ProductListSearchBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Business\ProductAbstract\ProductAbstractReaderInterface
-     */
     public function createProductAbstractReader(): ProductAbstractReaderInterface
     {
         return new ProductAbstractReader(
@@ -37,33 +34,21 @@ class ProductListSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Business\ProductList\ProductDataToProductListMapTransferMapperInterface
-     */
     public function createProductDataToProductListMapTransferMapper(): ProductDataToProductListMapTransferMapperInterface
     {
         return new ProductDataToProductListMapTransferMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToProductListFacadeInterface
-     */
     public function getProductListFacade(): ProductListSearchToProductListFacadeInterface
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_PRODUCT_LIST);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Business\Expander\ProductConcretePageSearchExpanderInterface
-     */
     public function createProductConcretePageSearchExpander(): ProductConcretePageSearchExpanderInterface
     {
         return new ProductConcretePageSearchExpander($this->getProductListFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Business\ProductPage\ProductPageDataExpanderInterface
-     */
     public function createProductPageDataExpander(): ProductPageDataExpanderInterface
     {
         return new ProductPageDataExpander(
@@ -71,9 +56,6 @@ class ProductListSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Business\Expander\CategoryNodePageSearchExpanderInterface
-     */
     public function createCategoryNodePageSearchExpander(): CategoryNodePageSearchExpanderInterface
     {
         return new CategoryNodePageSearchExpander($this->getRepository());

@@ -40,9 +40,6 @@ class ProductListSearchFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExpandProductConcretePageSearchTransferWithProductLists(): void
     {
         // Arrange
@@ -59,9 +56,6 @@ class ProductListSearchFacadeTest extends Unit
         $this->assertInstanceOf(ProductListMapTransfer::class, $productConcretePageSearchTransfer->getProductListMap());
     }
 
-    /**
-     * @return void
-     */
     public function testMapProductDataToProductListMapTransfer(): void
     {
         // Arrange

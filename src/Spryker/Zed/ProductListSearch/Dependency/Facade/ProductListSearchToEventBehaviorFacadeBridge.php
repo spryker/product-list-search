@@ -46,11 +46,6 @@ class ProductListSearchToEventBehaviorFacadeBridge implements ProductListSearchT
         return $this->eventBehaviorFacade->getEventTransferIds($eventTransfers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\HydrateEventsRequestTransfer $hydrateEventsRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\HydrateEventsResponseTransfer
-     */
     public function hydrateEventDataTransfer(HydrateEventsRequestTransfer $hydrateEventsRequestTransfer): HydrateEventsResponseTransfer
     {
         return $this->eventBehaviorFacade->hydrateEventDataTransfer($hydrateEventsRequestTransfer);

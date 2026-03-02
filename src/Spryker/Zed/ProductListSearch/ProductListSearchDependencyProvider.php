@@ -68,11 +68,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
      */
     public const FACADE_CATEGORY_PAGE_SEARCH = 'FACADE_CATEGORY_PAGE_SEARCH';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -81,11 +76,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
@@ -98,11 +88,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -114,11 +99,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addEventBehaviorFacade(Container $container): Container
     {
         $container->set(static::FACADE_EVENT_BEHAVIOR, function (Container $container) {
@@ -128,11 +108,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductPageSearchFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_PAGE_SEARCH, function (Container $container) {
@@ -142,11 +117,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductListFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_LIST, function (Container $container) {
@@ -156,11 +126,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductCategoryFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_CATEGORY, function (Container $container) {
@@ -170,11 +135,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_PRODUCT_QUERY, $container->factory(function () {
@@ -184,11 +144,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductCategoryPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_PRODUCT_CATEGORY_QUERY, $container->factory(function () {
@@ -198,11 +153,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductListCategoryPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_PRODUCT_LIST_CATEGORY_QUERY, $container->factory(function () {
@@ -212,11 +162,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductListProductConcretePropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_PRODUCT_LIST_PRODUCT_CONCRETE_QUERY, $container->factory(function () {
@@ -226,11 +171,6 @@ class ProductListSearchDependencyProvider extends AbstractBundleDependencyProvid
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCategoryPageSearchFacade(Container $container): Container
     {
         $container->set(static::FACADE_CATEGORY_PAGE_SEARCH, function (Container $container) {

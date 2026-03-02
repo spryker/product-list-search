@@ -21,25 +21,16 @@ use Spryker\Zed\ProductListSearch\ProductListSearchDependencyProvider;
  */
 class ProductListSearchCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToEventBehaviorFacadeInterface
-     */
     public function getEventBehaviorFacade(): ProductListSearchToEventBehaviorFacadeInterface
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_EVENT_BEHAVIOR);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToProductPageSearchFacadeInterface
-     */
     public function getProductPageSearchFacade(): ProductListSearchToProductPageSearchFacadeInterface
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_PRODUCT_PAGE_SEARCH);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToProductListFacadeInterface
-     */
     public function getProductListFacade(): ProductListSearchToProductListFacadeInterface
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_PRODUCT_LIST);
@@ -53,9 +44,6 @@ class ProductListSearchCommunicationFactory extends AbstractCommunicationFactory
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_PRODUCT_CATEGORY);
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\CategoryPageSearchFacadeInterface
-     */
     public function getCategoryPageSearchFacade(): CategoryPageSearchFacadeInterface
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::FACADE_CATEGORY_PAGE_SEARCH);

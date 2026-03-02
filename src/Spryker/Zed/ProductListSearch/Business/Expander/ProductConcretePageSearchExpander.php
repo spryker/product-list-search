@@ -18,19 +18,11 @@ class ProductConcretePageSearchExpander implements ProductConcretePageSearchExpa
      */
     protected $productListFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToProductListFacadeInterface $productListFacade
-     */
     public function __construct(ProductListSearchToProductListFacadeInterface $productListFacade)
     {
         $this->productListFacade = $productListFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcretePageSearchTransfer
-     */
     public function expandProductConcretePageSearchTransferWithProductLists(
         ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
     ): ProductConcretePageSearchTransfer {
@@ -43,11 +35,6 @@ class ProductConcretePageSearchExpander implements ProductConcretePageSearchExpa
         return $productConcretePageSearchTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcretePageSearchTransfer
-     */
     protected function expandProductConcretePageSearchTransferWithWhitelistIds(
         ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
     ): ProductConcretePageSearchTransfer {
@@ -60,11 +47,6 @@ class ProductConcretePageSearchExpander implements ProductConcretePageSearchExpa
         return $productConcretePageSearchTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcretePageSearchTransfer
-     */
     protected function expandProductConcretePageSearchTransferWithBlacklistIds(
         ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
     ): ProductConcretePageSearchTransfer {
@@ -77,11 +59,6 @@ class ProductConcretePageSearchExpander implements ProductConcretePageSearchExpa
         return $productConcretePageSearchTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductConcretePageSearchTransfer
-     */
     protected function sanitizeProductConcretePageSearchTransfer(
         ProductConcretePageSearchTransfer $productConcretePageSearchTransfer
     ): ProductConcretePageSearchTransfer {

@@ -47,23 +47,12 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
         return $searchQuery;
     }
 
-    /**
-     * @param \Elastica\Query $query
-     * @param int $idProductList
-     *
-     * @return void
-     */
     protected function expandQueryWithProductListFilters(Query $query, int $idProductList): void
     {
         $boolQuery = $this->getBoolQuery($query);
         $boolQuery->addFilter($this->createProductListBoolQuery($idProductList));
     }
 
-    /**
-     * @param int $idProductList
-     *
-     * @return \Elastica\Query\BoolQuery
-     */
     protected function createProductListBoolQuery(int $idProductList): BoolQuery
     {
         return (new BoolQuery())

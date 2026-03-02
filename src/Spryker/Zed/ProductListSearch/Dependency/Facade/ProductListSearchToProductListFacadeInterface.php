@@ -61,10 +61,5 @@ interface ProductListSearchToProductListFacadeInterface
      */
     public function getProductAbstractListIdsByProductAbstractIds(array $productAbstractIds): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListCriteriaTransfer $productListCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListCollectionTransfer
-     */
     public function getProductListCollection(ProductListCriteriaTransfer $productListCriteriaTransfer): ProductListCollectionTransfer;
 }

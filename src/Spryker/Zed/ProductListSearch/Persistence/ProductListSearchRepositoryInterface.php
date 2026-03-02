@@ -9,14 +9,8 @@ namespace Spryker\Zed\ProductListSearch\Persistence;
 
 interface ProductListSearchRepositoryInterface
 {
-    /**
-     * @return int
-     */
     public function getValueForWhitelistType(): int;
 
-    /**
-     * @return int
-     */
     public function getValueForBlacklistType(): int;
 
     /**
@@ -26,11 +20,6 @@ interface ProductListSearchRepositoryInterface
      */
     public function getProductAbstractIdsByConcreteIds(array $concreteIds): array;
 
-    /**
-     * @param array $categoryIds
-     *
-     * @return array
-     */
     public function getProductAbstractIdsByCategoryIds(array $categoryIds): array;
 
     /**

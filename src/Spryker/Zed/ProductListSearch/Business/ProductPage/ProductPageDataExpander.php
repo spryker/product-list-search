@@ -17,19 +17,11 @@ class ProductPageDataExpander implements ProductPageDataExpanderInterface
      */
     protected $productListFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductListSearch\Dependency\Facade\ProductListSearchToProductListFacadeInterface $productListFacade
-     */
     public function __construct(ProductListSearchToProductListFacadeInterface $productListFacade)
     {
         $this->productListFacade = $productListFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductPageLoadTransfer $productPageLoadTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductPageLoadTransfer
-     */
     public function expandProductPageData(ProductPageLoadTransfer $productPageLoadTransfer): ProductPageLoadTransfer
     {
         $productList = $this->productListFacade->getProductAbstractListIdsByProductAbstractIds($productPageLoadTransfer->getProductAbstractIds());

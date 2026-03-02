@@ -20,33 +20,21 @@ use Spryker\Zed\ProductListSearch\ProductListSearchDependencyProvider;
  */
 class ProductListSearchPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\Product\Persistence\SpyProductQuery
-     */
     public function getProductQuery(): SpyProductQuery
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::PROPEL_PRODUCT_QUERY);
     }
 
-    /**
-     * @return \Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery
-     */
     public function getProductCategoryPropelQuery(): SpyProductCategoryQuery
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::PROPEL_PRODUCT_CATEGORY_QUERY);
     }
 
-    /**
-     * @return \Orm\Zed\ProductList\Persistence\SpyProductListCategoryQuery
-     */
     public function getProductListCategoryPropelQuery(): SpyProductListCategoryQuery
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::PROPEL_PRODUCT_LIST_CATEGORY_QUERY);
     }
 
-    /**
-     * @return \Orm\Zed\ProductList\Persistence\SpyProductListProductConcreteQuery
-     */
     public function getProductListProductConcretePropelQuery(): SpyProductListProductConcreteQuery
     {
         return $this->getProvidedDependency(ProductListSearchDependencyProvider::PROPEL_PRODUCT_LIST_PRODUCT_CONCRETE_QUERY);
