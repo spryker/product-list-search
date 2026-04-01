@@ -35,4 +35,14 @@ class ProductListSearchConfig extends AbstractBundleConfig
      * @var string
      */
     public const PRODUCT_LIST_RESOURCE_NAME = 'product_list_search';
+
+    /**
+     * Specification:
+     * - Queue name used for product list search publish events.
+     *
+     * @api
+     *
+     * @var string
+     */
+    public const string PUBLISH_PRODUCT_LIST_SEARCH_QUEUE = 'publish.product_list_search';
 }
