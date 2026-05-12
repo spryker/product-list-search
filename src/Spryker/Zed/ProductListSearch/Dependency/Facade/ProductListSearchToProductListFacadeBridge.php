@@ -101,4 +101,9 @@ class ProductListSearchToProductListFacadeBridge implements ProductListSearchToP
     {
         return $this->productListFacade->getProductListCollection($productListCriteriaTransfer);
     }
+
+    public function preloadProductListCacheByProductIds(array $productIds): void
+    {
+        $this->productListFacade->preloadProductListCacheByProductIds($productIds);
+    }
 }

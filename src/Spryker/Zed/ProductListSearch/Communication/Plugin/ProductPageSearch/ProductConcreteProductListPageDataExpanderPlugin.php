@@ -11,14 +11,34 @@ use Generated\Shared\Transfer\ProductConcretePageSearchTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface;
+use Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPreloaderPluginInterface;
 
 /**
  * @method \Spryker\Zed\ProductListSearch\Business\ProductListSearchFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductListSearch\ProductListSearchConfig getConfig()
  * @method \Spryker\Zed\ProductListSearch\Communication\ProductListSearchCommunicationFactory getFactory()
  */
-class ProductConcreteProductListPageDataExpanderPlugin extends AbstractPlugin implements ProductConcretePageDataExpanderPluginInterface
+class ProductConcreteProductListPageDataExpanderPlugin extends AbstractPlugin implements ProductConcretePageDataExpanderPluginInterface, ProductConcretePageDataExpanderPreloaderPluginInterface
 {
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
+     *
+     * @return void
+     */
+    public function preload(array $productConcreteTransfers): void
+    {
+        $productIds = array_map(
+            static fn (ProductConcreteTransfer $productConcreteTransfer): int => $productConcreteTransfer->getIdProductConcreteOrFail(),
+            $productConcreteTransfers,
+        );
+
+        $this->getFacade()->preloadProductListCacheByProductIds($productIds);
+    }
+
     /**
      * {@inheritDoc}
      * - Expands provided ProductConcretePageSearchTransfer with product lists ids.

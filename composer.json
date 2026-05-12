@@ -13,7 +13,7 @@
         "spryker/product-category": "^4.7.0",
         "spryker/product-list": "^1.7.0",
         "spryker/product-page-search": "^3.42.0",
-        "spryker/product-page-search-extension": "^1.0.0",
+        "spryker/product-page-search-extension": "^1.7.0",
         "spryker/publisher-extension": "^1.0.0",
         "spryker/transfer": "^3.27.0"
     },

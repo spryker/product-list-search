@@ -75,4 +75,17 @@ interface ProductListSearchFacadeInterface
      * @return \Generated\Shared\Transfer\ProductPageLoadTransfer
      */
     public function expandProductPageData(ProductPageLoadTransfer $loadTransfer): ProductPageLoadTransfer;
+
+    /**
+     * Specification:
+     * - Bulk-preloads whitelist and blacklist product list IDs for all given product IDs into an in-memory cache.
+     * - Subsequent calls to product list expansion for the same IDs become instant cache hits.
+     *
+     * @api
+     *
+     * @param array<int> $productIds
+     *
+     * @return void
+     */
+    public function preloadProductListCacheByProductIds(array $productIds): void;
 }

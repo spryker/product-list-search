@@ -97,4 +97,20 @@ class ProductListSearchFacade extends AbstractFacade implements ProductListSearc
     {
         return $this->getFactory()->createProductPageDataExpander()->expandProductPageData($loadTransfer);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param array<int> $productIds
+     *
+     * @return void
+     */
+    public function preloadProductListCacheByProductIds(array $productIds): void
+    {
+        $this->getFactory()
+            ->getProductListFacade()
+            ->preloadProductListCacheByProductIds($productIds);
+    }
 }

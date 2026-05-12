@@ -62,4 +62,11 @@ interface ProductListSearchToProductListFacadeInterface
     public function getProductAbstractListIdsByProductAbstractIds(array $productAbstractIds): array;
 
     public function getProductListCollection(ProductListCriteriaTransfer $productListCriteriaTransfer): ProductListCollectionTransfer;
+
+    /**
+     * @param array<int> $productIds
+     *
+     * @return void
+     */
+    public function preloadProductListCacheByProductIds(array $productIds): void;
 }
