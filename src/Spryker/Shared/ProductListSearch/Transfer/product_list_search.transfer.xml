@@ -64,9 +64,11 @@
     </transfer>
 
     <transfer name="EventEntity">
+        <property name="id" type="int"/>
     </transfer>
 
     <transfer name="Node">
+        <property name="fkCategory" type="int"/>
     </transfer>
 
 </transfers>
