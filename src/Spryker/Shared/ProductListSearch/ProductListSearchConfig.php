@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\ProductListSearch;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class ProductListSearchConfig extends AbstractBundleConfig
+class ProductListSearchConfig extends AbstractSharedConfig
 {
     /**
      * @api
